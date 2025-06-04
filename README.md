@@ -2,10 +2,10 @@
 
 This is a simple Python Course Management System that allows users to manage courses, students, and enrollments. It provides functionalities to add, update, delete, and view courses and students, as well as enroll students in courses.
 
-# How to use
+### How to use
 
 1. Clone the repository to your local machine.
-2. Install uv package manager from (here)[https://docs.astral.sh/uv/#highlights]
+2. Install uv package manager from ([here](https://docs.astral.sh/uv/))
 3. Install the required packages using the command:
    ```bash
    uv sync
