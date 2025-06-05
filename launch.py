@@ -41,8 +41,8 @@ class ServerManager:
             print("❌ Error: backend/server.py not found")
             return
         
-        if not os.path.exists("frontend/app.py"):
-            print("❌ Error: frontend/app.py not found")
+        if not os.path.exists("frontend/main.py"):
+            print("❌ Error: frontend/main.py not found")
             return
         
         # Start servers in separate threads
