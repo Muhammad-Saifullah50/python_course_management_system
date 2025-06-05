@@ -27,7 +27,7 @@ class ServerManager:
             time.sleep(3)
             print("🚀 Starting Streamlit frontend...")
             self.streamlit_process = subprocess.Popen([
-                sys.executable, "-m", "streamlit", "run", "frontend/app.py"
+                sys.executable, "-m", "streamlit", "run", "frontend/main.py"
             ])
             print("✅ Streamlit frontend started on http://localhost:8501")
             self.streamlit_process.wait()
