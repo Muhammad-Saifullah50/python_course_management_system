@@ -1,0 +1,14 @@
+[
+    {
+        "email": "saif@gmail.com",
+        "role": "student",
+        "name": "saif",
+        "hashed_pwd": "$2b$12$XLp7nQcZXfvWBYv64MvN3eQjwu6OY.pp66k6cq5BLDaQNZB0TMeIK"
+    },
+    {
+        "email": "obaid@gmail.com",
+        "role": "student",
+        "name": "obaid",
+        "hashed_pwd": "$2b$12$4FcM.7SbTAID7vEUkhIqbuYf0.RFFDGb3S.7K9OaSZKmYwpDenhqG"
+    }
+]
