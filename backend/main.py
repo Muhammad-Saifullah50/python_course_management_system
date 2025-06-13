@@ -1,10 +1,10 @@
-import stat
 from fastapi import FastAPI
 from pydantic import Json
 from backend.utils.users.index import create_user, get_all_users
 from .classes.index import ApiResponse, LoginRequest, RegisterRequest, User
 import bcrypt
 from fastapi.responses import JSONResponse
+import uuid
 
 app = FastAPI()
 
@@ -60,14 +60,16 @@ async def register(data: RegisterRequest) -> JSONResponse:
                 return JSONResponse(status_code=400, content={"message": "User already exists.", "data": None})
 
     hashed_pwd = bcrypt.hashpw(data.password.encode() , bcrypt.gensalt()).decode()
-
-    new_user = User(name=data.name, email=data.email, role=data.role, hashed_pwd=hashed_pwd)
+    id = str(uuid.uuid1())
+    new_user = User(id=id, name=data.name, email=data.email, role=data.role, hashed_pwd=hashed_pwd)
 
     if new_user:
         try:
-            created_user = create_user(new_user)
-            return JSONResponse(status_code=201, content={"message": "User created successfully.", "data": {"user": created_user}})
+            created_user: User = create_user(new_user)
+            return JSONResponse(status_code=201, content={"message": "User created successfully.", "data": {"user": dict(created_user)}})
         except Exception as e:
             return JSONResponse(status_code=500, content={"message": f"Error creating user: {str(e)}", "data": None})
 
     return JSONResponse(status_code=500, content={"message": "Some error occurred.", "data": None})
+
+# have rto return the user from the login rute and remove from he refister route

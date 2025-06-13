@@ -1,4 +1,5 @@
 import streamlit as st
+import requests as req
 
 
 def main():
@@ -6,6 +7,7 @@ def main():
         st.session_state.authenticated if "authenticated" in st.session_state else False
     )
 
+    
     st.title("Python Course Management System")
 
     # Define the pages
@@ -28,3 +30,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# have to access the currently logged in user here 
+# have to protect the create course page from here to allow only teachers

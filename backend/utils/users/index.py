@@ -33,3 +33,4 @@ def create_user(user: User):
 
         f.seek(0)
         json.dump(users, f, indent=4)
+        return user

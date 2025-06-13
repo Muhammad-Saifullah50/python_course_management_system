@@ -23,6 +23,7 @@ class Course(BaseModel):
 
 
 class  User(BaseModel):
+    id: str
     email: str
     role: str
     name: str
