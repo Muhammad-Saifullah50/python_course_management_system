@@ -8,7 +8,7 @@ def register():
             json={"name": name, "email": email, "password": password, "role": role.lower()}
         )
         
-        if response.status_code == 200:
+        if response.status_code == 201:
             st.success("Registration successful!")
         else:
             st.error("Registration failed. Please check your credentials.")

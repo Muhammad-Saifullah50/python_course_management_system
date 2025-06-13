@@ -22,9 +22,8 @@ class Course(BaseModel):
     pass
 
 
-class   User():
-    def __init__(self, name:str, email:str, role: str, hashed_pwd:str):
-        self.email = email
-        self.role = role
-        self.name = name
-        self.hashed_pwd = hashed_pwd
+class  User(BaseModel):
+    email: str
+    role: str
+    name: str
+    hashed_pwd: str

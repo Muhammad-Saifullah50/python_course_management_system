@@ -12,7 +12,7 @@ def login():
         
         if response.status_code == 200:
             st.success("Login successful!")
-            st.switch_page("dashboard.py")
+            st.session_state.authenticated = True
         else:
             st.error("Login failed. Please check your credentials.")
 
