@@ -5,16 +5,20 @@ def create_course():
     st.header('Create New Course')    
     
     def handle_submit(course_name:str, credit_hours:int, description:str) -> None:
-        response = req.post(
-                "http://localhost:8000/api/courses/create",
-                json={"course_name": course_name, "credit_hours": credit_hours, "description": description}
-        )
-        # have to pass the currently logged in user as well or at least its id
-        
+        user = st.session_state.get('user')
+        if user:
+            response = req.post(
+                    "http://localhost:8000/api/courses/create",
+                    json={"title": course_name, "credit_hours": credit_hours, "description": description, 'teacher': user}
+            )
+        else:
+            st.error("User not found.")
+            return
+
         if response.status_code == 200:
             st.success("Course created successfully!")
         else:
-            st.error("Course creatio failed failed. Pleasr try again.")
+            st.error("Course creation failed. Please try again.")
 
     course_name = st.text_input("Course Name")
     credit_hours = st.selectbox(label='Credit hours', options=[1,2,3,4,5])

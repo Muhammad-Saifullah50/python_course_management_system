@@ -1,9 +1,10 @@
 import streamlit as st
 
 def dashboard():
+    user = st.session_state.user
     
-    role:str = 'student'
-    
+    role = user.get('role')
+
     if role == 'teacher':
         st.title("Teacher Dashboard")
         

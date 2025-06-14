@@ -1,7 +1,7 @@
+from typing import Dict, List
 from fastapi import FastAPI
-from pydantic import Json
 from backend.utils.users.index import create_user, get_all_users
-from .classes.index import ApiResponse, LoginRequest, RegisterRequest, User
+from .classes.index import  CreateCourseRequest, LoginRequest, RegisterRequest, User
 import bcrypt
 from fastapi.responses import JSONResponse
 import uuid
@@ -14,7 +14,7 @@ def root():
 
 @app.post("/api/login")
 async def login(data: LoginRequest) -> JSONResponse:
-    users: list[User] | None = get_all_users()
+    users: List[Dict[str, str | int]] | None = get_all_users()
 
     if users:
         for user in users:
@@ -65,11 +65,14 @@ async def register(data: RegisterRequest) -> JSONResponse:
 
     if new_user:
         try:
-            created_user: User = create_user(new_user)
-            return JSONResponse(status_code=201, content={"message": "User created successfully.", "data": {"user": dict(created_user)}})
+            create_user(new_user)
+            return JSONResponse(status_code=201, content={"message": "User created successfully.", "data": None})
         except Exception as e:
             return JSONResponse(status_code=500, content={"message": f"Error creating user: {str(e)}", "data": None})
 
     return JSONResponse(status_code=500, content={"message": "Some error occurred.", "data": None})
 
-# have rto return the user from the login rute and remove from he refister route
+
+@app.post('/api/courses/create')
+async def create_course(data: CreateCourseRequest) -> JSONResponse:
+    pass

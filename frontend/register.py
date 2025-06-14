@@ -2,14 +2,16 @@ import streamlit as st
 import requests as req
 
 def register():
+
     def handle_register(name:str ,email:str, password:str, role: str) -> None:
+        
         response = req.post(
             "http://localhost:8000/api/register",
             json={"name": name, "email": email, "password": password, "role": role.lower()}
         )
         
         if response.status_code == 201:
-            st.success("Registration successful!")
+            st.success("Registration successful! Please log in from sidebar to continue.")
         else:
             st.error("Registration failed. Please check your credentials.")
 

@@ -10,9 +10,12 @@ def login():
             json={"email": email, "password": password}
         )
         
+        result = response.json()
+        
         if response.status_code == 200:
             st.success("Login successful!")
             st.session_state.authenticated = True
+            st.session_state.user = result.get('data').get('user')
         else:
             st.error("Login failed. Please check your credentials.")
 

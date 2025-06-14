@@ -11,13 +11,14 @@ class RegisterRequest(BaseModel):
     password: str
     name: str
     role: str  # 'teacher' or 'student'
+    
 
 class ApiResponse(BaseModel):
     status: int
     message: Optional[str]
     data: Optional[dict[str, Any]]
-    
 
+    
 class Course(BaseModel):
     pass
 
@@ -28,3 +29,9 @@ class  User(BaseModel):
     role: str
     name: str
     hashed_pwd: str
+    
+class CreateCourseRequest(BaseModel):
+    title: str
+    description: str
+    credit_hours: int
+    teacher: User

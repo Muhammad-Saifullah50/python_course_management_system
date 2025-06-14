@@ -28,24 +28,24 @@
         "hashed_pwd": "$2b$12$tbge4F2AdfPc8UDnsi5SJ.5FxJnv0HbIbk5QP3BI4pqgmOZSXw5Uu"
     },
     {
-        "id": "0fc19ade-4838-11f0-8da4-10e7c61f8f93",
-        "email": "bbb@gmail.com",
+        "id": "65ef8e76-4933-11f0-b634-00d49e81d660",
+        "email": "qqq@gmail.com",
         "role": "student",
-        "name": "bbb",
-        "hashed_pwd": "$2b$12$SXhIHgWumCCIVXy13r8YkexaLeOO0EqCRyWU6PtJlgFyI0CLWPTWC"
+        "name": "qqq",
+        "hashed_pwd": "$2b$12$1dO.0qWjDaKFd5xIVpMBeuGpEQDJJTyNZ/RPj.kUxkhUmKgR4DYMi"
     },
     {
-        "id": "2627d7f1-4838-11f0-bc92-10e7c61f8f93",
-        "email": "ccc@gmail.com",
+        "id": "b5de7644-4933-11f0-8aa4-00d49e81d660",
+        "email": "www@gmail.com",
         "role": "student",
-        "name": "ccc",
-        "hashed_pwd": "$2b$12$gkYnlxMLUKWXJ.FTW9jPz.ck53NFGvclTdEjsJ7ISGriEPXxDXGGa"
+        "name": "www",
+        "hashed_pwd": "$2b$12$xa27roqUhoeCNahYPTLEf.SH/K13/cT1u9dj/.obcLoi.IX0ubZu."
     },
     {
-        "id": "4ec1c9b5-4838-11f0-833f-10e7c61f8f93",
-        "email": "eee@gmail.com",
-        "role": "student",
-        "name": "eee",
-        "hashed_pwd": "$2b$12$KEBmj5.M1ylKOaPaz5j4Qu7gi2aIHcMhPTS0ibMbZvDhmmhxKsdUi"
+        "id": "292b6c43-4934-11f0-a043-00d49e81d660",
+        "email": "vvv@gmail.com",
+        "role": "teacher",
+        "name": "vvv",
+        "hashed_pwd": "$2b$12$26JfSLozkWtLhDDSCUT0x.k0O1nirernyG2euAvVCKZI77QKGsiEi"
     }
 ]
