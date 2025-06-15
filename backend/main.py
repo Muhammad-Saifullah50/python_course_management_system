@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from backend.utils.users.index import (
     create_course_in_db,
     create_user,
+    delete_course_enrollment_from_user,
     enroll_user_in_course,
     get_all_courses,
     get_all_users,
@@ -10,6 +11,7 @@ from backend.utils.users.index import (
 from .classes.index import (
     Course,
     CreateCourseRequest,
+    DeleteCourseRequest,
     EnrollRequest,
     LoginRequest,
     RegisterRequest,
@@ -49,7 +51,8 @@ async def login(data: LoginRequest) -> JSONResponse:
                                     "email": user.get("email"),
                                     "role": user.get("role"),
                                     "name": user.get("name"),
-                                    'enrolled_courses': user.get('enrolled_courses')
+                                    'enrolled_courses': user.get('enrolled_courses'),
+                                    "hashed_pwd": user.get('hashed_pwd')
                                 }
                             },
                         },
@@ -163,7 +166,30 @@ async def get_courses() -> JSONResponse:
             content={"message": "Failed to fetch courses", "data": None},
         )
 
-
+@app.delete('/api/courses')
+async def delete_course_enrollment(data: DeleteCourseRequest) -> JSONResponse:
+    try:
+        course = data.course
+        user = data.user
+        
+        result = delete_course_enrollment_from_user(user, course)
+                
+        if result['status_code'] == 200:
+            return JSONResponse(
+                status_code=200,
+                content={"message": "Dropped course successfully", "data": None},
+            )
+        return JSONResponse(
+            status_code=500,
+            content={"message": "Failed to drop course", "data": None},
+        )   
+        
+    except Exception as e:
+        print(f"Error  dropping course: {e}")
+        return JSONResponse(
+            status_code=500,
+            content={"message": "Something went wrong", "data": None},
+        )
 
 @app.post("/api/courses/enroll")
 async def enroll_in_course(data: EnrollRequest) -> JSONResponse:
@@ -190,3 +216,4 @@ async def enroll_in_course(data: EnrollRequest) -> JSONResponse:
         )
 
 
+# have to return user from enroll route and dlete route to the frontwend  and set the session state.use r to that user

@@ -32,7 +32,7 @@ class  User(BaseModel):
     email: str
     role: str
     name: str
-    hashed_pwd: Optional[str] = None
+    hashed_pwd: str
     enrolled_courses: Optional[List[Course]]
     
 class Teacher(BaseModel):
@@ -49,5 +49,9 @@ class CreateCourseRequest(BaseModel):
     
     
 class EnrollRequest(BaseModel):
+    user: User
+    course: Course
+    
+class DeleteCourseRequest(BaseModel):
     user: User
     course: Course

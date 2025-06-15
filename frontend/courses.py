@@ -1,3 +1,4 @@
+from functools import partial
 from typing import Counter
 import streamlit as st
 import requests as req
@@ -31,6 +32,7 @@ def courses():
                                     })
             if response.status_code == 201:
                 st.success('Course enrolment successfull. Go to your dashboard for more info')
+                st.session_state.user = response.json()['data']['user']
         if course:
             st.subheader(course['title'])
             st.text(f'Instructor: Sir {course['teacher']['name']}')
@@ -38,10 +40,13 @@ def courses():
             st.text(f'Description: {course['description']}')
             
             st.button('Enroll in this course', type='primary', use_container_width=True, on_click=handle_register)
-
-    for course in courses:
+    
+    def select_and_show(course):
         st.session_state.selected_course = course
-        st.button(f"{course['title']} ➕", on_click=show_modal)
+        show_modal()
+        
+    for course in courses:
+        st.button(f"{course['title']} ➕", on_click=partial(select_and_show, course))
         
 
 if __name__ == "__main__":

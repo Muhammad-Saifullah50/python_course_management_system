@@ -102,9 +102,22 @@ def replace_exisitng_user(updated_user:User) -> dict[str , str | int]:
     
             
 def enroll_user_in_course(user: User, course: Course) -> dict[str, str| int]:
-    print(user.enrolled_courses)
+    
     if user.enrolled_courses is not None:
        user.enrolled_courses.append(course)
+      
+       result = replace_exisitng_user(user)
+       if result['status_code'] == 200:
+           return {'message': 'success', 'status_code': 200}
+    
+       
+       return {'message': 'failure', 'status_code': 500}
+    return {'message': 'failure', 'status_code': 500}
+
+def delete_course_enrollment_from_user(user: User, course: Course)-> dict[str, str| int]:
+    
+    if user.enrolled_courses is not None:
+       user.enrolled_courses.remove(course)
       
        result = replace_exisitng_user(user)
        if result['status_code'] == 200:

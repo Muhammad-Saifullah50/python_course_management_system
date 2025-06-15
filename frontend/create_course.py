@@ -7,7 +7,7 @@ def create_course():
 
     def handle_submit(course_name: str, credit_hours: int, description: str) -> None:
         user = st.session_state.get("user")
-        print(user)
+        
         if user:
             response = req.post(
                 "http://localhost:8000/api/courses/create",

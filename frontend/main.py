@@ -39,6 +39,6 @@ def main():
             on_click=logout,
         )
 
-
+    print(st.session_state.user, 'user')
 if __name__ == "__main__":
     main()

@@ -1,10 +1,18 @@
 [
     {
-        "id": "d0ecc1d5-49b1-11f0-9fad-00d49e81d660",
+        "id": "e6861859-49b1-11f0-af4b-00d49e81d660",
+        "email": "obaid@gmail.com",
+        "role": "teacher",
+        "name": "Obaidullah",
+        "hashed_pwd": "$2b$12$L9o6AB.whB47le/3V4lxs.K5XEnOHjtPR6wfa9W9mBGbLM50LkPAu",
+        "enrolled_courses": []
+    },
+    {
+        "id": "1db5e748-49cb-11f0-97e8-00d49e81d660",
         "email": "saif@gmail.com",
         "role": "student",
         "name": "Saifullah",
-        "hashed_pwd": null,
+        "hashed_pwd": "$2b$12$wNQx02NqXM8jPkvmDNgL7ewgasZryhDIOY9xxh9N9codMVX32aMAe",
         "enrolled_courses": [
             {
                 "id": "0c9086f5-49b2-11f0-9d1d-00d49e81d660",
@@ -19,13 +27,5 @@
                 }
             }
         ]
-    },
-    {
-        "id": "e6861859-49b1-11f0-af4b-00d49e81d660",
-        "email": "obaid@gmail.com",
-        "role": "teacher",
-        "name": "Obaidullah",
-        "hashed_pwd": "$2b$12$L9o6AB.whB47le/3V4lxs.K5XEnOHjtPR6wfa9W9mBGbLM50LkPAu",
-        "enrolled_courses": []
     }
 ]
