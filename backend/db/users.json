@@ -15,6 +15,18 @@
         "hashed_pwd": "$2b$12$wNQx02NqXM8jPkvmDNgL7ewgasZryhDIOY9xxh9N9codMVX32aMAe",
         "enrolled_courses": [
             {
+                "id": "2b5f73ff-49a0-11f0-a91e-00d49e81d660",
+                "title": "OOP",
+                "description": "Object Oriented Programming",
+                "credit_hours": 1,
+                "teacher": {
+                    "id": "d86d8229-4837-11f0-94a2-10e7c61f8f93",
+                    "email": "aaa@gmail.com",
+                    "role": "teacher",
+                    "name": "aaa"
+                }
+            },
+            {
                 "id": "0c9086f5-49b2-11f0-9d1d-00d49e81d660",
                 "title": "Object Oriented Programming",
                 "description": "This course provides a comprehensive introduction to Object-Oriented Programming, a fundamental programming paradigm widely used in modern software development. Students will learn how to design and build modular, reusable, and scalable software using core OOP concepts such as classes, objects, inheritance, encapsulation, polymorphism, and abstraction.\n\nThrough hands-on projects and real-world examples, learners will gain practical experience implementing OOP in languages like Python, Java, or C++. By the end of the course, students will be able to structure code effectively, solve complex problems using OOP principles, and develop maintainable applications.\n\nTopics Covered:\n\nIntroduction to Classes and Objects\n\nConstructors and Destructors\n\nEncapsulation and Data Hiding\n\nInheritance and Code Reusability\n\nPolymorphism and Method Overriding\n\nAbstraction and Interface Design\n\nComposition vs. Inheritance\n\nDesigning OOP-based Applications\n\nPrerequisites: Basic knowledge of programming fundamentals.",

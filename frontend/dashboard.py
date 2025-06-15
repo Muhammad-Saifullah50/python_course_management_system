@@ -23,6 +23,7 @@ def dashboard():
             
             if response.status_code == 200:
                 st.success('Course dropped successfully')
+                st.session_state.user = response.json()['data']
             else:
                 st.error('Failed to drop course. please try again')
 

@@ -177,7 +177,7 @@ async def delete_course_enrollment(data: DeleteCourseRequest) -> JSONResponse:
         if result['status_code'] == 200:
             return JSONResponse(
                 status_code=200,
-                content={"message": "Dropped course successfully", "data": None},
+                content={"message": "Dropped course successfully", "data":  result['data']},
             )
         return JSONResponse(
             status_code=500,
@@ -201,7 +201,7 @@ async def enroll_in_course(data: EnrollRequest) -> JSONResponse:
         if result['status_code'] == 200:
             return JSONResponse(
                 status_code=200,
-                content={"message": "Enrolled in course successfully", "data": None},
+                content={"message": "Enrolled in course successfully", "data": result['data']},
             )
         return JSONResponse(
             status_code=500,
@@ -216,4 +216,3 @@ async def enroll_in_course(data: EnrollRequest) -> JSONResponse:
         )
 
 
-# have to return user from enroll route and dlete route to the frontwend  and set the session state.use r to that user

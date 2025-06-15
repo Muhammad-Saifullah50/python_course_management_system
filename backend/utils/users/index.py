@@ -1,5 +1,6 @@
 import os
 import json
+from turtle import update
 from typing import Dict, List
 import streamlit as st
 
@@ -92,7 +93,7 @@ def replace_exisitng_user(updated_user:User) -> dict[str , str | int]:
             with open(path, 'w') as f:
                 json.dump(users, f, indent=4)
                 
-            return {'message': 'success', 'status_code': 200}
+            return {'message': 'success', 'status_code': 200, 'data': updated_user.model_dump()}
         except json.JSONDecodeError as e:
             print('Erroro replacing user', e)
             return {'message': 'failure', 'status_code': 500}
@@ -108,7 +109,7 @@ def enroll_user_in_course(user: User, course: Course) -> dict[str, str| int]:
       
        result = replace_exisitng_user(user)
        if result['status_code'] == 200:
-           return {'message': 'success', 'status_code': 200}
+           return {'message': 'success', 'status_code': 200, 'data': result['data']}
     
        
        return {'message': 'failure', 'status_code': 500}
@@ -121,7 +122,7 @@ def delete_course_enrollment_from_user(user: User, course: Course)-> dict[str, s
       
        result = replace_exisitng_user(user)
        if result['status_code'] == 200:
-           return {'message': 'success', 'status_code': 200}
+           return {'message': 'success', 'status_code': 200,'data': result['data']}
     
        
        return {'message': 'failure', 'status_code': 500}

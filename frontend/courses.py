@@ -7,7 +7,7 @@ import requests as req
 def courses():
     st.title("All Courses")
         
-
+    
     try:
         response = req.get("http://localhost:8000/api/courses")
         result = response.json()
@@ -17,6 +17,8 @@ def courses():
         
     if 'selected_course' not in st.session_state:
         st.session_state.selected_course = None
+        
+
         
     @st.dialog('Course Details', width='large')  
     def show_modal():
@@ -30,23 +32,36 @@ def courses():
                                     'user': user,
                                     'course': course
                                     })
-            if response.status_code == 201:
+            if response.status_code == 200:
                 st.success('Course enrolment successfull. Go to your dashboard for more info')
-                st.session_state.user = response.json()['data']['user']
+                st.session_state.user = response.json()['data']
+                
+            else:
+                st.success('Failed to enroll in course')
+                st.session_state.user = response.json()['data']
+                
         if course:
             st.subheader(course['title'])
             st.text(f'Instructor: Sir {course['teacher']['name']}')
             st.text(f'Credit hours: {course['credit_hours']}')
             st.text(f'Description: {course['description']}')
             
-            st.button('Enroll in this course', type='primary', use_container_width=True, on_click=handle_register)
+            is_already_enrolled = course in st.session_state.user['enrolled_courses']
+            
+            st.button('Enroll in this course', type='primary', use_container_width=True, on_click=handle_register, disabled=is_already_enrolled)
     
     def select_and_show(course):
         st.session_state.selected_course = course
         show_modal()
         
+        
     for course in courses:
-        st.button(f"{course['title']} ➕", on_click=partial(select_and_show, course))
+        is_already_enrolled = course in st.session_state.user['enrolled_courses']
+        st.button(
+            f"{course['title']} ➕",
+            on_click=partial(select_and_show, course),
+            disabled=is_already_enrolled
+            )
         
 
 if __name__ == "__main__":
