@@ -3,6 +3,17 @@ import requests as req
 
 
 def create_course():
+    """
+    Displays a Streamlit form for creating a new course and handles its submission.
+    This function renders a user interface for entering course details such as course name,
+    credit hours, and description. Upon submission, it sends a POST request to the backend API
+    to create a new course associated with the currently logged-in user (teacher).
+    Accepts:
+        None. All inputs are collected via Streamlit widgets.
+    Returns:
+        None. Displays success or error messages in the Streamlit app based on the API response.
+    """
+    
     st.header("Create New Course")
 
     def handle_submit(course_name: str, credit_hours: int, description: str) -> None:

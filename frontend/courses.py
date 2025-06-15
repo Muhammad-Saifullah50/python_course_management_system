@@ -1,10 +1,20 @@
 from functools import partial
-from typing import Counter
 import streamlit as st
 import requests as req
 
 
-def courses():
+def courses() -> None:
+    """
+    Displays a list of all available courses and allows the user to view course details and enroll in a course.
+    This function fetches the list of courses from the backend API and presents them as buttons in the Streamlit interface.
+    When a course is selected, a modal dialog shows detailed information about the course and provides an option to enroll.
+    Handles user enrollment by sending a POST request to the backend API and updates the session state accordingly.
+    Accepts:
+        None. Relies on Streamlit's session state for user information.
+    Returns:
+        None. All UI rendering and state updates are handled within the function.
+    """
+    
     st.title("All Courses")
         
     

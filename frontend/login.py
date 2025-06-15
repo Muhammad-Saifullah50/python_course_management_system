@@ -3,6 +3,16 @@ import requests as req
 
 
 def login():
+    """
+    Displays a login form using Streamlit, allowing users to enter their email and password to authenticate.
+    The function renders input fields for email and password, and a login button. When the button is clicked,
+    it sends a POST request to the backend API endpoint '/api/login' with the provided credentials.
+    If authentication is successful, it updates the session state to reflect the authenticated user.
+    Accepts:
+        None (inputs are taken interactively from the user via the Streamlit UI).
+    Returns:
+        None (the function operates via side effects, updating Streamlit's session state and UI).
+    """
     
     def handle_login(email:str, password:str) -> None:
         response = req.post(

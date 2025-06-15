@@ -2,6 +2,15 @@ import streamlit as st
 import requests as req
 
 def register():
+    """
+    Displays a user registration form using Streamlit and handles user registration.
+    The function renders a registration form that collects the user's name, email, password, and role (Student or Teacher).
+    Upon submission, it sends a POST request to the backend API to create a new user account.
+    Accepts:
+        None. All inputs are collected via Streamlit widgets.
+    Returns:
+        None. The function displays success or error messages in the Streamlit app based on the registration outcome.
+    """
 
     def handle_register(name:str ,email:str, password:str, role: str) -> None:
         

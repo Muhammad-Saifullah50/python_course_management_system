@@ -3,6 +3,18 @@ from backend.utils.users.index import logout
 
 
 def main():
+    """
+    Main entry point for the Python Course Management System frontend.
+    This function manages user authentication state, determines the user's role,
+    and dynamically configures the available navigation pages based on whether the
+    user is logged in as a teacher, student, or is unauthenticated. It also handles
+    the display of the logout button for authenticated users.
+    Accepts:
+        None. Relies on Streamlit's session state and UI components.
+    Returns:
+        None. The function is intended for its side effects in the Streamlit app UI.
+    """
+    
     is_logged_in = (
         st.session_state.authenticated if "authenticated" in st.session_state else False
     )
