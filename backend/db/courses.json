@@ -1,0 +1,14 @@
+[
+    {
+        "id": "2b5f73ff-49a0-11f0-a91e-00d49e81d660",
+        "title": "OOP",
+        "description": "Object Oriented Programming",
+        "credit_hours": 1,
+        "teacher": {
+            "id": "d86d8229-4837-11f0-94a2-10e7c61f8f93",
+            "email": "aaa@gmail.com",
+            "role": "teacher",
+            "name": "aaa"
+        }
+    }
+]

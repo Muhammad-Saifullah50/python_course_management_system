@@ -20,7 +20,11 @@ class ApiResponse(BaseModel):
 
     
 class Course(BaseModel):
-    pass
+    id: str
+    title: str
+    description: str
+    credit_hours: int
+    teacher: dict[str, str | int] 
 
 
 class  User(BaseModel):
@@ -30,8 +34,19 @@ class  User(BaseModel):
     name: str
     hashed_pwd: str
     
+class Teacher(BaseModel):
+    id: str
+    email: str
+    name: str
+    role: str
+    
 class CreateCourseRequest(BaseModel):
     title: str
     description: str
     credit_hours: int
-    teacher: User
+    teacher: Teacher
+    
+    
+class EnrollRequest(BaseModel):
+    user: User
+    course: Course
