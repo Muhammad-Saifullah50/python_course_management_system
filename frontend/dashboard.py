@@ -14,3 +14,6 @@ def dashboard():
     
 if __name__ == "__main__":
     dashboard()
+# for styudent: dispolay the enriolled courses
+# for teacher: display vcreated courses
+    

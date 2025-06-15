@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import Any, Optional
+from typing import Any, List, Optional
 
 
 class LoginRequest(BaseModel):
@@ -32,7 +32,8 @@ class  User(BaseModel):
     email: str
     role: str
     name: str
-    hashed_pwd: str
+    hashed_pwd: Optional[str] = None
+    enrolled_courses: Optional[List[Course]]
     
 class Teacher(BaseModel):
     id: str

@@ -29,9 +29,7 @@ def courses():
                                     'user': user,
                                     'course': course
                                     })
-            result = response.json()
-            
-            if result.status_code == 201:
+            if response.status_code == 201:
                 st.success('Course enrolment successfull. Go to your dashboard for more info')
         if course:
             st.subheader(course['title'])
@@ -48,3 +46,4 @@ def courses():
 
 if __name__ == "__main__":
     courses()
+ # have to find a way to close the modal

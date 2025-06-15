@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from backend.utils.users.index import (
     create_course_in_db,
     create_user,
+    enroll_user_in_course,
     get_all_courses,
     get_all_users,
 )
@@ -48,6 +49,7 @@ async def login(data: LoginRequest) -> JSONResponse:
                                     "email": user.get("email"),
                                     "role": user.get("role"),
                                     "name": user.get("name"),
+                                    'enrolled_courses': user.get('enrolled_courses')
                                 }
                             },
                         },
@@ -82,7 +84,7 @@ async def register(data: RegisterRequest) -> JSONResponse:
     hashed_pwd = bcrypt.hashpw(data.password.encode(), bcrypt.gensalt()).decode()
     id = str(uuid.uuid1())
     new_user = User(
-        id=id, name=data.name, email=data.email, role=data.role, hashed_pwd=hashed_pwd
+        id=id, name=data.name, email=data.email, role=data.role, hashed_pwd=hashed_pwd, enrolled_courses=[]
     )
 
     if new_user:
@@ -163,22 +165,28 @@ async def get_courses() -> JSONResponse:
 
 
 
-@app.get("/api/courses/enroll")
+@app.post("/api/courses/enroll")
 async def enroll_in_course(data: EnrollRequest) -> JSONResponse:
     try:
         course = data.course
         user = data.user
-
-        return JSONResponse(
-            status_code=200,
-            content={"message": "Courses fetched successfully", "data": {'courses': courses}},
-        )
-    except Exception as e:
-        courses = []
-        print(f"Error  fetching  courses {e}")
+        
+        result  = enroll_user_in_course(user, course)
+        if result['status_code'] == 200:
+            return JSONResponse(
+                status_code=200,
+                content={"message": "Enrolled in course successfully", "data": None},
+            )
         return JSONResponse(
             status_code=500,
-            content={"message": "Failed to fetch courses", "data": None},
+            content={"message": "Failed to enroll", "data": None},
+        )   
+        
+    except Exception as e:
+        print(f"Error  enrolling in course: {e}")
+        return JSONResponse(
+            status_code=500,
+            content={"message": "Something went wrong", "data": None},
         )
 
 

@@ -1,51 +1,31 @@
 [
     {
-        "id": "4234213e-4836-11f0-a00c-10e7c61f8f93",
+        "id": "d0ecc1d5-49b1-11f0-9fad-00d49e81d660",
         "email": "saif@gmail.com",
         "role": "student",
-        "name": "saif",
-        "hashed_pwd": "$2b$12$Fa3eHxRw5M38N0pBw7QGL.9IRqO28uJkxMcxjPKzyuRi4bNuudpwa"
+        "name": "Saifullah",
+        "hashed_pwd": null,
+        "enrolled_courses": [
+            {
+                "id": "0c9086f5-49b2-11f0-9d1d-00d49e81d660",
+                "title": "Object Oriented Programming",
+                "description": "This course provides a comprehensive introduction to Object-Oriented Programming, a fundamental programming paradigm widely used in modern software development. Students will learn how to design and build modular, reusable, and scalable software using core OOP concepts such as classes, objects, inheritance, encapsulation, polymorphism, and abstraction.\n\nThrough hands-on projects and real-world examples, learners will gain practical experience implementing OOP in languages like Python, Java, or C++. By the end of the course, students will be able to structure code effectively, solve complex problems using OOP principles, and develop maintainable applications.\n\nTopics Covered:\n\nIntroduction to Classes and Objects\n\nConstructors and Destructors\n\nEncapsulation and Data Hiding\n\nInheritance and Code Reusability\n\nPolymorphism and Method Overriding\n\nAbstraction and Interface Design\n\nComposition vs. Inheritance\n\nDesigning OOP-based Applications\n\nPrerequisites: Basic knowledge of programming fundamentals.",
+                "credit_hours": 3,
+                "teacher": {
+                    "id": "e6861859-49b1-11f0-af4b-00d49e81d660",
+                    "email": "obaid@gmail.com",
+                    "role": "teacher",
+                    "name": "Obaidullah"
+                }
+            }
+        ]
     },
     {
-        "id": "79f27cd7-4836-11f0-8390-10e7c61f8f93",
+        "id": "e6861859-49b1-11f0-af4b-00d49e81d660",
         "email": "obaid@gmail.com",
-        "role": "student",
-        "name": "obaid",
-        "hashed_pwd": "$2b$12$9REhUBYbFwW39nrJLiXeJuUDM4L5hfMuB7Jc/sUAPpnaoN/MFmOBi"
-    },
-    {
-        "id": "a9b657de-4836-11f0-9735-10e7c61f8f93",
-        "email": "asad@gmail.com",
-        "role": "student",
-        "name": "asad",
-        "hashed_pwd": "$2b$12$QzvGj6eJw3KG2BJiXblxrugxYYZRxDMFSh4UvPej0RGmW/RXNImAy"
-    },
-    {
-        "id": "d86d8229-4837-11f0-94a2-10e7c61f8f93",
-        "email": "aaa@gmail.com",
         "role": "teacher",
-        "name": "aaa",
-        "hashed_pwd": "$2b$12$tbge4F2AdfPc8UDnsi5SJ.5FxJnv0HbIbk5QP3BI4pqgmOZSXw5Uu"
-    },
-    {
-        "id": "65ef8e76-4933-11f0-b634-00d49e81d660",
-        "email": "qqq@gmail.com",
-        "role": "student",
-        "name": "qqq",
-        "hashed_pwd": "$2b$12$1dO.0qWjDaKFd5xIVpMBeuGpEQDJJTyNZ/RPj.kUxkhUmKgR4DYMi"
-    },
-    {
-        "id": "b5de7644-4933-11f0-8aa4-00d49e81d660",
-        "email": "www@gmail.com",
-        "role": "student",
-        "name": "www",
-        "hashed_pwd": "$2b$12$xa27roqUhoeCNahYPTLEf.SH/K13/cT1u9dj/.obcLoi.IX0ubZu."
-    },
-    {
-        "id": "292b6c43-4934-11f0-a043-00d49e81d660",
-        "email": "vvv@gmail.com",
-        "role": "teacher",
-        "name": "vvv",
-        "hashed_pwd": "$2b$12$26JfSLozkWtLhDDSCUT0x.k0O1nirernyG2euAvVCKZI77QKGsiEi"
+        "name": "Obaidullah",
+        "hashed_pwd": "$2b$12$L9o6AB.whB47le/3V4lxs.K5XEnOHjtPR6wfa9W9mBGbLM50LkPAu",
+        "enrolled_courses": []
     }
 ]

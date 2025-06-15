@@ -75,3 +75,41 @@ def get_all_courses():
             return courses
         except json.JSONDecodeError:
             courses = []
+            
+def replace_exisitng_user(updated_user:User) -> dict[str , str | int]:
+    path = 'backend/db/users.json'
+    if not os.path.exists(path):
+        raise FileNotFoundError("The users.json file does not exist.")
+    
+    with open(path, 'r') as f:
+        try:
+            users: list[User] = json.load(f)
+            for index,user in enumerate(users):
+                if user['id'] == updated_user.id:
+                    users[index] = updated_user.model_dump()
+                    break
+                
+            with open(path, 'w') as f:
+                json.dump(users, f, indent=4)
+                
+            return {'message': 'success', 'status_code': 200}
+        except json.JSONDecodeError as e:
+            print('Erroro replacing user', e)
+            return {'message': 'failure', 'status_code': 500}
+
+    
+    
+    
+            
+def enroll_user_in_course(user: User, course: Course) -> dict[str, str| int]:
+    print(user.enrolled_courses)
+    if user.enrolled_courses is not None:
+       user.enrolled_courses.append(course)
+      
+       result = replace_exisitng_user(user)
+       if result['status_code'] == 200:
+           return {'message': 'success', 'status_code': 200}
+    
+       
+       return {'message': 'failure', 'status_code': 500}
+    return {'message': 'failure', 'status_code': 500}
