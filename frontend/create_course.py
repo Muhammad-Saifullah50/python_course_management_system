@@ -1,6 +1,7 @@
 import streamlit as st
 import requests as req
-
+import os
+from dotenv import load_dotenv
 
 def create_course():
     """
@@ -14,6 +15,11 @@ def create_course():
         None. Displays success or error messages in the Streamlit app based on the API response.
     """
     
+    if not os.getenv('ENVIRONMENT'):
+        load_dotenv('.env.local')
+    
+    API_URL = os.getenv('API_URL')
+    
     st.header("Create New Course")
 
     def handle_submit(course_name: str, credit_hours: int, description: str) -> None:
@@ -21,7 +27,7 @@ def create_course():
         
         if user:
             response = req.post(
-                "http://localhost:8000/api/courses/create",
+                f"{API_URL}/api/courses/create",
                 json={
                     "title": course_name,
                     "credit_hours": credit_hours,

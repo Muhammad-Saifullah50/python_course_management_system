@@ -1,7 +1,8 @@
 import streamlit as st
 import pandas as pd
 import requests as req
-
+import os
+from dotenv import load_dotenv
 from backend.classes.index import Course, User
 
 
@@ -17,7 +18,12 @@ def dashboard():
     Returns:
         None. Renders UI components using Streamlit.
     """
-
+    
+    if not os.getenv('ENVIRONMENT'):
+        load_dotenv('.env.local')
+    
+    API_URL = os.getenv('API_URL')
+    
     user = st.session_state.user
     role = user.get("role")
 
@@ -26,7 +32,7 @@ def dashboard():
         st.title("Teacher Dashboard")
         # have to shopw all courses created by teacher
 
-        response = req.get("http://localhost:8000/api/courses")
+        response = req.get(f"{API_URL}/api/courses")
         result = response.json()
 
         courses = result["data"]["courses"]
@@ -56,7 +62,7 @@ def dashboard():
 
         def handle_drop(course: Course, user: User):
             response = req.delete(
-                "http://localhost:8000/api/courses",
+                f"{API_URL}/api/courses",
                 json={"course": course, "user": user},
             )
 

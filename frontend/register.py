@@ -1,5 +1,7 @@
+from dotenv import load_dotenv
 import streamlit as st
 import requests as req
+import os
 
 def register():
     """
@@ -11,11 +13,14 @@ def register():
     Returns:
         None. The function displays success or error messages in the Streamlit app based on the registration outcome.
     """
-
+    if not os.getenv('ENVIRONMENT'):
+        load_dotenv('.env.local')
+    
+    API_URL = os.getenv('API_URL')
     def handle_register(name:str ,email:str, password:str, role: str) -> None:
         
         response = req.post(
-            "http://localhost:8000/api/register",
+            f"{API_URL}/api/register",
             json={"name": name, "email": email, "password": password, "role": role.lower()}
         )
         

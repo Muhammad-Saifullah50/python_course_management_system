@@ -1,6 +1,7 @@
+import os
 import streamlit as st
 import requests as req
-
+from dotenv import load_dotenv
 
 def login():
     """
@@ -13,10 +14,14 @@ def login():
     Returns:
         None (the function operates via side effects, updating Streamlit's session state and UI).
     """
+    if not os.getenv('ENVIRONMENT'):
+        load_dotenv('.env.local')
+    
+    API_URL = os.getenv('API_URL')
     
     def handle_login(email:str, password:str) -> None:
         response = req.post(
-            "http://localhost:8000/api/login",
+            f"{API_URL}/api/login",
             json={"email": email, "password": password}
         )
         

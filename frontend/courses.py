@@ -1,7 +1,8 @@
 from functools import partial
 import streamlit as st
 import requests as req
-
+from dotenv import load_dotenv
+import os
 
 def courses() -> None:
     """
@@ -15,6 +16,11 @@ def courses() -> None:
         None. All UI rendering and state updates are handled within the function.
     """
     
+    if not os.getenv('ENVIRONMENT'):
+        load_dotenv('.env.local')
+    
+    API_URL = os.getenv('API_URL')
+    
     st.title("All Courses")
     
     user = st.session_state.get('user')
@@ -26,7 +32,7 @@ def courses() -> None:
     
     st.subheader(f'Max credit hours: (18)')
     try:
-        response = req.get("http://localhost:8000/api/courses")
+        response = req.get(f"{API_URL}/api/courses")
         result = response.json()
         courses = result["data"]["courses"]
     except Exception as e:
@@ -44,7 +50,7 @@ def courses() -> None:
         def handle_register():
             user = st.session_state.user
             course = st.session_state.selected_course
-            response = req.post('http://localhost:8000/api/courses/enroll',
+            response = req.post(f'{API_URL}/api/courses/enroll',
                                 json={
                                     'user': user,
                                     'course': course
