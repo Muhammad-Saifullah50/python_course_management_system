@@ -16,8 +16,15 @@ def courses() -> None:
     """
     
     st.title("All Courses")
-        
     
+    user = st.session_state.get('user')
+
+    credit_hours = 0
+    total_credit_hours = sum([c.get('credit_hours') + credit_hours for c in user.get("enrolled_courses")])    
+    
+    st.subheader(f'Total credit hours of courses you have enrolled: ({total_credit_hours})')
+    
+    st.subheader(f'Max credit hours: (18)')
     try:
         response = req.get("http://localhost:8000/api/courses")
         result = response.json()
@@ -70,7 +77,7 @@ def courses() -> None:
         st.button(
             f"{course['title']} ➕",
             on_click=partial(select_and_show, course),
-            disabled=is_already_enrolled
+            disabled=is_already_enrolled or total_credit_hours > 18
             )
         
 

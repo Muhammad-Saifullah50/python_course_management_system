@@ -33,7 +33,7 @@ def main():
     login_page = st.Page("login.py", title="Login", icon="🔑")
 
     if is_logged_in and role == "teacher":
-        pages = [dashboard_page, create_course_page, courses_page]
+        pages = [dashboard_page, create_course_page]
 
     elif is_logged_in and role == "student":
         pages = [dashboard_page, courses_page]
