@@ -83,4 +83,3 @@ def courses() -> None:
 
 if __name__ == "__main__":
     courses()
- # have to find a way to close the modal

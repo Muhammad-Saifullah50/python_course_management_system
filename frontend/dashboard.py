@@ -9,7 +9,7 @@ def dashboard():
     """
     Displays the dashboard interface for the currently logged-in user based on their role.
     The function checks the user's role from the Streamlit session state and renders either a teacher or student dashboard.
-    For teachers, it displays a welcome message and dashboard title.
+    For teachers, it displays a welcome message and dashboard title and a table of created courses.
     For students, it displays a welcome message, dashboard title, a table of enrolled courses, and provides the ability to drop courses via a button.
     Handles course drop requests by sending a DELETE request to the backend API and updates the session state accordingly.
     Accepts:
