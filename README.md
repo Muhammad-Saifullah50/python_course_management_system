@@ -28,18 +28,25 @@ Follow these simple steps to set up and run the project:
    ```bash
    uv sync
    ```
+4. **Create a `.env.local` File**
 
-4. **Launch the Application**
+   Create a file named `.env.local` in the project root and add the following content:
+   ```env
+   ENVIRONMENT='local'
+   API_URL='http://localhost:8000'
+   ```
+5. **Launch the Application**
    ```bash
    uv run launch.py
    ```
 
-5. **Access the System**
+6. **Access the System**
    - Frontend: [http://localhost:8501](http://localhost:8501)
    - Backend: [http://localhost:8000](http://localhost:8000)
 
-6. **Add More Packages**
+7. **Add More Packages**
    ```bash
    uv add <package_name>
    ```
 
+   
