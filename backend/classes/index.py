@@ -10,7 +10,7 @@ class RegisterRequest(BaseModel):
     email: str
     password: str
     name: str
-    role: str  # 'teacher' or 'student'
+    role: str
     
 
 class ApiResponse(BaseModel):
